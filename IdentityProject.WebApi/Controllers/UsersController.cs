@@ -9,7 +9,8 @@ namespace IdentityProject.WebApi.Controllers;
 [ApiController]
 public class UsersController : ControllerBase
 {
-    MsSqlContext msSqlContext = new MsSqlContext();
+    //ALLAHIM YARDIM ET
+    MsSqlContext msSqlContext;
 
 
     [HttpPost("add")]
