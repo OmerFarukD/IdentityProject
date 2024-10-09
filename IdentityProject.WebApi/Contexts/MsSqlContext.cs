@@ -6,6 +6,11 @@ namespace IdentityProject.WebApi.Contexts;
 public class MsSqlContext : DbContext
 {
 
+    public MsSqlContext(DbContextOptions opt): base(opt)
+    {
+        
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Docker kurulu olanlar 
