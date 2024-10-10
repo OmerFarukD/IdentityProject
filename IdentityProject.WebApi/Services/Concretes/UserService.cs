@@ -9,38 +9,44 @@ public class UserService : IUserService
 {
 
     private IUserRepository _userRepository;
-    public UserService(IUserRepository userRepository)
+    public  UserService(IUserRepository userRepository)
     {
         _userRepository = userRepository;   
     }
 
     public User Add(User user)
     {
-        throw new NotImplementedException();
+        User created = _userRepository.Add(user);
+
+        return created;
     }
 
     public User Delete(int id)
     {
-        throw new NotImplementedException();
+        User user = _userRepository.Delete(id);
+        return user;
     }
 
     public List<User> GetAllUsers()
     {
-        throw new NotImplementedException();
+        return _userRepository.GetAll();
     }
 
     public User GetByEmail(string email)
     {
-        throw new NotImplementedException();
+        User user = _userRepository.GetByEmail(email);
+        return user;
     }
 
     public User GetById(int id)
     {
-        throw new NotImplementedException();
+        User user = _userRepository.GetById(id);
+        return user;
     }
 
     public User Update(User user)
     {
-        throw new NotImplementedException();
+        User updated = _userRepository.Update(user);
+        return updated;
     }
 }
