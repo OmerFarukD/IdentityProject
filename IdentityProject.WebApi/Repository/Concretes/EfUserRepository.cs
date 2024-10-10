@@ -1,5 +1,6 @@
 ﻿using IdentityProject.WebApi.Contexts;
 using IdentityProject.WebApi.Models;
+using IdentityProject.WebApi.Models.Dtos.Users.Request;
 using IdentityProject.WebApi.Repository.Abtstracts;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,11 @@ public class EfUserRepository : IUserRepository
 
     public User Add(User user)
     {
+        AddUserRequestDto dto;
+
+    
+
+
         _context.Users.Add(user);
         _context.SaveChanges();
 
@@ -26,12 +32,18 @@ public class EfUserRepository : IUserRepository
 
     public User Delete(int id)
     {
-        throw new NotImplementedException();
+        User user = GetById(id);
+        _context.Users.Remove(user);
+        _context.SaveChanges();
+
+        return user;
     }
 
     public List<User> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Users
+            .Include(x=> x.Role)
+            .ToList();
     }
 
     public List<User> GetAllByUsernameContains(string text)

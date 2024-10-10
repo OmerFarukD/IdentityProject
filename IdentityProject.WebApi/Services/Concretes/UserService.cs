@@ -1,4 +1,5 @@
 ﻿using IdentityProject.WebApi.Models;
+using IdentityProject.WebApi.Models.Dtos.Users.Request;
 using IdentityProject.WebApi.Repository.Abtstracts;
 using IdentityProject.WebApi.Repository.Concretes;
 using IdentityProject.WebApi.Services.Abstracts;
@@ -14,8 +15,10 @@ public class UserService : IUserService
         _userRepository = userRepository;   
     }
 
-    public User Add(User user)
+    public User Add(AddUserRequestDto dto)
     {
+        User user = (User)dto;
+
         User created = _userRepository.Add(user);
 
         return created;

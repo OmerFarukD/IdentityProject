@@ -1,4 +1,6 @@
-﻿namespace IdentityProject.WebApi.Models;
+﻿using IdentityProject.WebApi.Models.Dtos.Users.Request;
+
+namespace IdentityProject.WebApi.Models;
 
 public sealed class User : Entity
 {
@@ -10,4 +12,19 @@ public sealed class User : Entity
 
     public int RoleId { get; set; }
     public Role Role { get; set; }
+
+
+
+    public static explicit operator User(AddUserRequestDto dto)
+    {
+        return new User
+        {
+            Email = dto.Email,
+            Password = dto.Password,
+            Phone = dto.Phone,
+            RoleId = dto.RoleId,
+            Username = dto.Username
+        };
+    }
+
 }

@@ -1,6 +1,8 @@
 using IdentityProject.WebApi.Contexts;
 using IdentityProject.WebApi.Repository.Abtstracts;
 using IdentityProject.WebApi.Repository.Concretes;
+using IdentityProject.WebApi.Services.Abstracts;
+using IdentityProject.WebApi.Services.Concretes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepository, EfUserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddDbContext<MsSqlContext>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
