@@ -1,5 +1,6 @@
 ﻿using IdentityProject.WebApi.Models;
 using IdentityProject.WebApi.Models.Dtos.Users.Request;
+using IdentityProject.WebApi.Models.Dtos.Users.Response;
 using IdentityProject.WebApi.Repository.Abtstracts;
 using IdentityProject.WebApi.Repository.Concretes;
 using IdentityProject.WebApi.Services.Abstracts;
@@ -30,9 +31,9 @@ public class UserService : IUserService
         return user;
     }
 
-    public List<User> GetAllUsers()
+    public List<UserResponseDto> GetAllUsers()
     {
-        return _userRepository.GetAll();
+        return _userRepository.GetAll().Select(x=> (UserResponseDto)x).ToList();
     }
 
     public User GetByEmail(string email)
